@@ -317,5 +317,103 @@ body {
   <footer class="footer">
     <p>&copy; 2026 GentleReview AI</p>
   </footer>
+
+  <script>
+// === Language Toggle ===
+(function() {
+  var langToggle = document.getElementById('langToggle');
+  var currentLang = localStorage.getItem('gr-lang') || 'en';
+
+  function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('gr-lang', lang);
+    langToggle.textContent = lang === 'en' ? '中文' : 'English';
+    document.querySelectorAll('[data-en][data-zh]').forEach(function(el) {
+      el.textContent = el.getAttribute('data-' + lang);
+    });
+    // Update <summary> elements - preserve text nodes only
+    document.querySelectorAll('summary[data-en][data-zh]').forEach(function(el) {
+      el.childNodes.forEach(function(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+          node.textContent = el.getAttribute('data-' + lang);
+        }
+      });
+    });
+  }
+
+  // Restore saved language
+  setLang(currentLang);
+
+  langToggle.addEventListener('click', function() {
+    setLang(currentLang === 'en' ? 'zh' : 'en');
+  });
+})();
+
+// === Theme Toggle ===
+(function() {
+  var themeToggle = document.getElementById('themeToggle');
+  var html = document.documentElement;
+
+  function setTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('gr-theme', theme);
+  }
+
+  // System preference with saved override
+  var saved = localStorage.getItem('gr-theme');
+  if (saved) {
+    setTheme(saved);
+  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    setTheme('dark');
+  }
+
+  themeToggle.addEventListener('click', function() {
+    setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+})();
+
+// === Screenshot Carousel ===
+(function() {
+  var track = document.getElementById('carouselTrack');
+  var images = track.querySelectorAll('.carousel-img');
+  var dotsContainer = document.getElementById('carouselDots');
+  var prevBtn = document.querySelector('.carousel-prev');
+  var nextBtn = document.querySelector('.carousel-next');
+  var currentIndex = 0;
+
+  // Create dots
+  images.forEach(function(img, i) {
+    var dot = document.createElement('button');
+    dot.className = 'carousel-dot';
+    dot.setAttribute('aria-label', 'Screenshot ' + (i + 1));
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', function() { goTo(i); });
+    dotsContainer.appendChild(dot);
+  });
+
+  function goTo(index) {
+    images[currentIndex].classList.remove('active');
+    dotsContainer.children[currentIndex].classList.remove('active');
+    currentIndex = index;
+    images[currentIndex].classList.add('active');
+    dotsContainer.children[currentIndex].classList.add('active');
+  }
+
+  prevBtn.addEventListener('click', function() {
+    goTo((currentIndex - 1 + images.length) % images.length);
+  });
+
+  nextBtn.addEventListener('click', function() {
+    goTo((currentIndex + 1) % images.length);
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft') goTo((currentIndex - 1 + images.length) % images.length);
+    if (e.key === 'ArrowRight') goTo((currentIndex + 1) % images.length);
+  });
+})();
+  </script>
 </body>
 </html>
