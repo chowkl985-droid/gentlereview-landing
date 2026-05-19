@@ -12,14 +12,106 @@
   <link rel="icon" href="screenshots/icon128.png">
 </head>
 <body>
-  <nav><!-- lang toggle + theme toggle --></nav>
+  <nav class="nav-bar">
+    <div class="nav-inner">
+      <span class="nav-logo">GentleReview AI</span>
+      <div class="nav-actions">
+        <button class="lang-btn" id="langToggle" aria-label="Switch language">中文</button>
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </div>
+  </nav>
+
   <main>
-    <section id="hero"><!-- Hero --></section>
-    <section id="value-props"><!-- 3 value props --></section>
-    <section id="screenshots"><!-- screenshot carousel --></section>
-    <section id="faq"><!-- FAQ accordion --></section>
-    <section id="cta"><!-- Final CTA --></section>
+    <!-- Hero -->
+    <section id="hero" class="hero">
+      <div class="hero-badge" data-en="For Amazon & Shopify Sellers" data-zh="專為 Amazon & Shopify 賣家設計"></div>
+      <h1 class="hero-title" data-en="Reply to Reviews in Seconds with AI" data-zh="用 AI 秒回 Amazon & Shopify 評論"></h1>
+      <p class="hero-sub" data-en="One click generates warm, professional replies. No more staring at a blank text box." data-zh="一鍵生成溫和專業的回覆，從此不用再對著空白框發呆。"></p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="https://chowkl.gumroad.com/l/GentleReview" target="_blank" data-en="Buy for $29 — Lifetime Access" data-zh="$29 買斷，永久使用"></a>
+        <a class="btn-secondary" href="#value-props" data-en="See How It Works ↓" data-zh="看看怎麼用 ↓"></a>
+      </div>
+      <div class="hero-note" data-en="3-day free trial included &middot; No credit card needed" data-zh="內含 3 天免費試用 &middot; 不需信用卡"></div>
+    </section>
+
+    <!-- Value Props -->
+    <section id="value-props" class="section">
+      <h2 class="section-title" data-en="Why Sellers Choose GentleReview" data-zh="為什麼賣家選擇 GentleReview"></h2>
+      <div class="props-grid">
+        <div class="prop-card">
+          <div class="prop-icon">⚡</div>
+          <h3 data-en="Save Hours Every Week" data-zh="每週省下數小時"></h3>
+          <p data-en="Import CSV, pick a tone, one click generates replies for all reviews. What used to take hours now takes minutes." data-zh="匯入 CSV、選擇語氣、一鍵為所有評論生成回覆。原本要花幾小時的事，現在幾分鐘搞定。"></p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">💰</div>
+          <h3 data-en="$29 Once, Yours Forever" data-zh="$29 一次買斷，永久使用"></h3>
+          <p data-en="No monthly subscriptions. No per-reply fees. One payment, unlimited replies for life — unlike tools that charge $20–50/month." data-zh="沒有月費、沒有按回覆計費。一次付款，無限回覆永久使用 — 不像其他工具每月收 $20–50。"></p>
+        </div>
+        <div class="prop-card">
+          <div class="prop-icon">🔒</div>
+          <h3 data-en="100% Local, 100% Private" data-zh="100% 本機運行，資料不外洩"></h3>
+          <p data-en="Your review data never leaves your computer. No cloud uploads, no third-party servers. Your customers' data stays yours." data-zh="評論資料完全留在你的電腦上。不上傳雲端、不經過第三方伺服器。客戶資料只屬於你。"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section id="screenshots" class="section section-alt">
+      <h2 class="section-title" data-en="See It in Action" data-zh="看看實際畫面"></h2>
+      <div class="carousel">
+        <button class="carousel-arrow carousel-prev" aria-label="Previous screenshot">&#10094;</button>
+        <div class="carousel-track" id="carouselTrack">
+          <img src="screenshots/1.png" alt="GentleReview AI Screenshot 1" class="carousel-img active">
+          <img src="screenshots/2.png" alt="GentleReview AI Screenshot 2" class="carousel-img">
+          <img src="screenshots/3.png" alt="GentleReview AI Screenshot 3" class="carousel-img">
+          <img src="screenshots/4.png" alt="GentleReview AI Screenshot 4" class="carousel-img">
+          <img src="screenshots/5.png" alt="GentleReview AI Screenshot 5" class="carousel-img">
+          <img src="screenshots/6.png" alt="GentleReview AI Screenshot 6" class="carousel-img">
+        </div>
+        <button class="carousel-arrow carousel-next" aria-label="Next screenshot">&#10095;</button>
+      </div>
+      <div class="carousel-dots" id="carouselDots"></div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <h2 class="section-title" data-en="Frequently Asked Questions" data-zh="常見問題"></h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary data-en="Do I need coding skills to use this?" data-zh="需要程式知識嗎？"></summary>
+          <p data-en="Not at all. Installation takes 2 minutes. After that, you just import a CSV, pick a reply style, and click generate." data-zh="完全不用。安裝只要 2 分鐘。之後你只需要匯入 CSV、選擇回覆風格、點擊生成。"></p>
+        </details>
+        <details class="faq-item">
+          <summary data-en="Does my review data get uploaded anywhere?" data-zh="評論資料會上傳到雲端嗎？"></summary>
+          <p data-en="No. Everything runs locally on your computer. Your data never touches a third-party server — not even ours." data-zh="不會。所有東西都在你的本機電腦上運行。你的資料完全不會經過任何第三方伺服器——包括我們的。"></p>
+        </details>
+        <details class="faq-item">
+          <summary data-en="What happens after the 3-day trial?" data-zh="試用期結束後會怎樣？"></summary>
+          <p data-en="You'll see an activation screen. Purchase a license on Gumroad, enter the key, and keep using it forever. No subscription, no auto-renewal." data-zh="會顯示啟用畫面。在 Gumroad 購買授權、輸入序號，就能永久繼續使用。沒有訂閱、不會自動續約。"></p>
+        </details>
+        <details class="faq-item">
+          <summary data-en="Is there a refund policy?" data-zh="可以退款嗎？"></summary>
+          <p data-en="Yes. You can request a full refund through Gumroad within 7 days of purchase, no questions asked." data-zh="可以。購買後 7 天內可透過 Gumroad 無條件全額退款。"></p>
+        </details>
+        <details class="faq-item">
+          <summary data-en="Which platforms are supported?" data-zh="支援哪些平台？"></summary>
+          <p data-en="Amazon (Seller Central CSV export) and Shopify reviews from Judge.me, Loox, Yotpo, Stamped.io, and more. Auto-detects column formats from 20+ variants." data-zh="Amazon（Seller Central CSV 匯出）和 Shopify 評論系統：Judge.me、Loox、Yotpo、Stamped.io 等。自動識別 20+ 種欄位格式。"></p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="cta" class="section cta-section">
+      <h2 class="cta-title" data-en="Ready to Stop Writing Replies Manually?" data-zh="準備好不再手動回覆評論了嗎？"></h2>
+      <p class="cta-sub" data-en="$29, one-time. Lifetime access. 3-day free trial." data-zh="$29 一次買斷，永久使用，內含 3 天免費試用。"></p>
+      <a class="btn-primary btn-large" href="https://chowkl.gumroad.com/l/GentleReview" target="_blank" data-en="Get GentleReview AI →" data-zh="立即取得 GentleReview AI →"></a>
+    </section>
   </main>
-  <footer></footer>
+
+  <footer class="footer">
+    <p>&copy; 2026 GentleReview AI</p>
+  </footer>
 </body>
 </html>
